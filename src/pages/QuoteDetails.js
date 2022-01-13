@@ -1,14 +1,21 @@
 import { useParams, Route } from "react-router-dom";
 import { Fragment } from "react";
 import Comments from "../components/comments/Comments";
+import HighlightedQuote from "../components/quotes/HighlightedQuote";
 
 const QuoteDetails = () => {
   const params = useParams();
-  console.log(params);
+
+  const dummyData = [
+    { id: "q1", author: "Henry Salliss", text: "bruh" },
+    { id: "q2", author: "Barack Obama", text: "my last name is..." },
+  ];
+
+  const quote = dummyData.find((quote) => quote.id === params.quoteID);
 
   return (
     <Fragment>
-      <p>{params.quoteID}</p>
+      <HighlightedQuote text={quote.text} author={quote.author} />
       <Route path={`/quotes/${params.quoteID}/comments`}>
         <Comments />
       </Route>
