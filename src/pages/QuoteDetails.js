@@ -10,6 +10,8 @@ import LoadingSpinner from "../components/UI/LoadingSpinner";
 const QuoteDetails = () => {
   const params = useParams();
   const match = useRouteMatch();
+  console.log(match.url);
+  console.log(params);
 
   const { quoteID } = params;
   const {
@@ -50,7 +52,7 @@ const QuoteDetails = () => {
         </div>
       </Route>
       <Route path={`${match.url}/comments`}>
-        <Comments />
+        <Comments quoteId={quoteID} />
       </Route>
     </Fragment>
   );
